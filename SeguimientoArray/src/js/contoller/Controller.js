@@ -1,4 +1,5 @@
-  
+let logic;
+
 class Controller {
     
     constructor(app) {
@@ -6,4 +7,8 @@ class Controller {
         logic= new Logic(this);
     }
 
+
+    draw(){
+        logic.draw();
+    }
 }

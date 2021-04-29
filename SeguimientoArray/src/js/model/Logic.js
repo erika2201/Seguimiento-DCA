@@ -17,7 +17,7 @@ class Logic {
         //FIRST SCREEN
         switch (this.screen) {
             case 0:
-                rectMode(CENTER);
+                rectMode(app.CENTER);
                 noStroke();
                 rect(300, 350, 75, 30);         //Number
                 rect(240, 350, 30, 30, 5);      //-
@@ -40,5 +40,6 @@ class Logic {
             case 1:
 
             break;
-    }   
+        }   
+    } 
 }
