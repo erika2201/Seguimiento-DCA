@@ -15,8 +15,8 @@ class Circle extends Figure {
 
 
     moveCircle() {
-        posX += this.speed;
-        if (this.x > 450 || this.x < 10) { 
+        this.x += this.speed;
+        if (this.x > 590 || this.x < 10) { 
             this.speed = -this.speed; //change direction
         }
     }

@@ -1,7 +1,7 @@
 let controller;
 
 function setup(){
-    createCanvas(600,600);
+    createCanvas(600,650);
     controller= new Controller(this);
 }
 
@@ -17,4 +17,7 @@ function mouseClicked(){
 }
 
 
+function keyPressed(){
+    controller.key();
+}
 

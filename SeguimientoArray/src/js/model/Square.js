@@ -13,12 +13,14 @@ class Square extends Figure {
        text(this.value, this.x, posY);
     }
 
+
     moveSquare() {
-        posX += this.speed;
-        if (this.x > 450 || this.x < 10) { 
+        this.x += this.speed;
+        if (this.x > 590 || this.x < 10) { 
             this.speed = -this.speed; //change direction
         }
     }
+
 
     getValue() {
         return this.value;

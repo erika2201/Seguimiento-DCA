@@ -9,22 +9,22 @@ class Logic {
 
         this.screen = 0;    //to use with switch
         this.countNumb = 0;
-        this.size = 1;
+        this.tam = 1;
 
         this.error = false;
         this.drawElli = false;
 
         this.position = [];
         this.position[0] = 10;
-        this.position[1] = 80;
-        this.position[2] = 150;
-        this.position[3] = 220;
-        this.position[4] = 290;
-        this.position[5] = 360;
-        this.position[6] = 430;
-        this.position[7] = 500;
-        this.position[8] = 570;
-        this.position[9] = 640;
+        this.position[1] = 60;
+        this.position[2] = 110;
+        this.position[3] = 160;
+        this.position[4] = 210;
+        this.position[5] = 260;
+        this.position[6] = 310;
+        this.position[7] = 360;
+        this.position[8] = 410;
+        this.position[9] = 460;
 
     }
 
@@ -53,25 +53,26 @@ class Logic {
        
         //SECOND SCREEN
             case 1:
-                rectMode(app.CENTER);
+                rectMode(CENTER);
                 noStroke();
-                rect(80, 475, 125, 50, 10);
-                rect(220, 475, 125, 50, 10);
-                rect(360, 475, 125, 50, 10);
-                rect(500, 475, 125, 50, 10);
-                text("Add", 70, 480);
-                text("Delete", 200, 480);
-                text("Magnify", 340, 480);
-                text("Circles", 480, 480);
+                rect(80, 600, 125, 50, 10);     //Add
+                rect(220, 600, 125, 50, 10);    //Delete
+                rect(360, 600, 125, 50, 10);    //Magnify
+                rect(500, 600, 125, 50, 10);    //Circle
+                textSize(18);
+                text("Add", 60, 605);
+                text("Delete", 190, 605);
+                text("Magnify", 330, 605);
+                text("Circles", 470, 605);
                 
                 for (let i = 0; i < this.square.length; i++) {
-                    this.square[i].drawSquare((70 * i) + 70, 50 * this.size);
+                    this.square[i].drawSquare((50 * i) + 45, 40 * this.tam);
                     this.square[i].moveSquare();
                 }
 
                 if (this.drawElli) {
                     for (let i = 0; i < this.circleArray.length; i++) {
-                        this.circleArray[i].drawCircle((70 * i) + 70, 50 * this.size);
+                        this.circleArray[i].drawCircle((50 * i) + 45, 40 * this.tam);
                         this.circleArray[i].moveCircle();
                     }
                 }
@@ -98,7 +99,7 @@ class Logic {
                     this.countNumb > 0 && this.countNumb <= 10) {
                     this.screen = 1;
                     for (let i = 0; i < this.countNumb; i++) {
-                        this.square.push(new Square(this.position[this.pos], 100, this.countNumb, this.size))
+                        this.square.push(new Square(50, this.position[this.pos], this.countNumb, this.tam))
                         console.log(this.countNumb);
                     }
                 }
@@ -108,7 +109,53 @@ class Logic {
                     this.error = true;
                 }
                 break;
+
             case 1: 
+             if (mouseX >= 18 && mouseX <= 142 && 
+                 mouseY >= 590 && mouseY <= 610) {
+                    console.log("Add");
+                    if (this.square.length >= 0 && this.square.length < 10) {
+                        this.square.push(new Square(50, this.position[this.pos], this.countNumb, this.tam));
+                    }
+                }
+
+             if (mouseX >= 158 && mouseX <= 282 && 
+                 mouseY >= 590 && mouseY <= 610) {
+                    console.log("Delete");
+                    if (this.square.length > 1) {
+                        this.square.splice(0, 1);
+                    }
+                }
+
+            if (mouseX >= 298 && mouseX <= 422 && 
+                mouseY >= 590 && mouseY <= 610) {
+                    console.log("Magnify");
+                    this.square.forEach(element => {
+                        this.tam = 2;});
+                }
+
+            if (mouseX >= 438 && mouseX <= 562 && 
+                mouseY >= 590 && mouseY <= 610) {
+                    console.log("Circle");
+                    this.circleArray = this.square.map(function (x) {
+                        return x = new Circle(50, 50 * x.pos, x.getValue, x.tam); })
+                        this.drawElli = true;
+                }
+                 break;
             }
     }
+
+
+     key() {
+        if (keyCode === 78) {
+            this.square.sort(function (a, b) {
+                return a.getValue() - b.getValue();
+            });
+
+            this.circleArray.sort(function (a, b) {
+                return a.getValue() - b.getValue();
+            });
+        }
+    }
+
 }
