@@ -79,26 +79,27 @@ class Logic {
         }
     }
     
+
     mouse() {
         switch (this.screen) {
             case 0:
                 if (mouseX >= 225 && mouseX <= 255 && 
                     mouseY >= 335 && mouseY <= 365 && 
-                    this.counter < 10) {
-                    this.countNumb += 1;
+                    this.countNumb > 0) {
+                    this.countNumb -= 1;
                 }
                 if (mouseX >= 345 && mouseX <= 375 &&
                     mouseY >= 335 && mouseY <= 365 && 
-                    this.counter > 0) {
-                    this.countNumb -= 1;
+                    this.countNumb < 10) {
+                    this.countNumb += 1;
                 }
                 if (mouseX >= 225 && mouseX <= 375 && 
                     mouseY >= 375 && mouseY <= 404 && 
                     this.countNumb > 0 && this.countNumb <= 10) {
                     this.screen = 1;
                     for (let i = 0; i < this.countNumb; i++) {
-                        this.square.push(new Square(this.position[this.pos], 100, this.countNum, this.size))
-                        console.log(this.countNum);
+                        this.square.push(new Square(this.position[this.pos], 100, this.countNumb, this.size))
+                        console.log(this.countNumb);
                     }
                 }
                 if (mouseX >= 225 && mouseX <= 375 &&

@@ -9,8 +9,11 @@ function setup(){
 function draw(){
     background(140, 166, 255);
     controller.draw();
+}
 
 
+function mouseClicked(){
+    controller.mouse();
 }
 
 

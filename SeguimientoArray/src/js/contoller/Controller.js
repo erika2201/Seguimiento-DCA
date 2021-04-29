@@ -11,4 +11,14 @@ class Controller {
     draw(){
         logic.draw();
     }
+
+
+    mouse(){
+        logic.mouse();
+    }
+    
+
+    key(){
+        logic.key();
+    }
 }
