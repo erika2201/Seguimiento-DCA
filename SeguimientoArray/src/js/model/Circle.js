@@ -8,7 +8,7 @@ class Circle extends Figure {
     }
 
 
-    drawFigure(posY, tam) {
+    drawCircle(posY, tam) {
         ellipse(this.x, posY, tam, tam);
         text(this.value, this.x, posY);
     }

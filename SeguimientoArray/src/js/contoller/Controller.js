@@ -1,7 +1,9 @@
   
 class Controller {
     
-    constructor() {
-        
+    constructor(app) {
+        this.app=app;
+        logic= new Logic(this);
     }
+
 }
