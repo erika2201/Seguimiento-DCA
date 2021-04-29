@@ -9,7 +9,7 @@ class Square extends Figure {
 
 
     drawSquare(posY, tam) {
-       rect((this.x, posY, tam, tam);
+       rect(this.x, posY, tam, tam);
        text(this.value, this.x, posY);
     }
 
